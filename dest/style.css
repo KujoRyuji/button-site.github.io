@@ -2,32 +2,42 @@
        GLOBAL SAFETY
        ========================= */
     html, body {
-      touch-action: manipulation;
+      margin: 0;
+      width: 100%;
+      height: 100%;
+      background: black;
       overflow: hidden;
-    }
-
-    * {
-      user-select: none;
-      -webkit-user-select: none;
-      -webkit-tap-highlight-color: transparent;
     }
 
     /* =========================
        PAGE LAYOUT
        ========================= */
     body {
-      margin: 0;
-      height: 100vh; /* Use full viewport height */
-      background-image: url("bg.png");
-      background-size: cover; /* Ensures background image scales dynamically */
-      background-position: center;
-      background-repeat: no-repeat;
-      font-family: Arial, sans-serif;
-      color: white;
+      width: 100vw;
+      height: 100vh;
+
+      position: relative;
+      overflow: hidden;
+    }
+
+    #viewport {
+      width: 100vw;
+      height: 100vh;
+      background: black;
+      overflow: hidden;
       display: flex;
       justify-content: center;
-      align-items: center;
-      overflow: hidden;
+    }
+
+    #stage {
+      width: 100vw;
+      height: 100vh;
+      position: relative;
+      background-image: url("bg.png");
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      justify-content: center;
     }
 
     /* Container that holds the button and image */
@@ -74,14 +84,12 @@
 
     .outline {
       position: absolute;
-      top: 4%;
+      top: 5%;
       left: 50%;
       transform: translateX(-50%);
       width: 100vw;
       height: 95vh;
       object-fit: fill;
-      z-index: -1;
-      bottom: 5vh;
     }
 
     /* =========================
@@ -101,15 +109,19 @@
       height: auto;
       max-width: 400px;
       object-fit: cover;
-
       cursor: pointer;
 
       display: block;
       margin: 0 auto;
       
       -webkit-tap-highlight-color: transparent;
-      transition: filter 2s ease-in-out;
+      transition: filter 2s ease-in-out, transform 0.2s ease;
     }
+
+    /* #bigButton:active {
+      transform: scale(0.95);
+    } */
+
   /* =========================
    Breathing effect for LED glow (animated) 
    ========================= */
@@ -142,7 +154,7 @@
    ========================= */
 @media screen and (max-width: 768px) {
   #bigButton {
-    width: 40vw;  /* Larger on small screens */
+    width: 70vw;  /* Larger on small screens */
     height: auto; /* Keep aspect ratio for mobile */
   }
 }
@@ -159,4 +171,22 @@
     width: 90vw; /* Almost full width for ultra-small screens */
     height: auto; /* Maintain aspect ratio */
   }
+}
+
+body.landscape #viewport {
+  overflow-y: auto;
+}
+
+body.landscape #stage {
+  height: 420vh;
+  background-size: cover;
+  background-position: top center;
+}
+
+body.landscape .container {
+  height: 400vh;
+}
+
+body.landscape .outline {
+  height: 400vh;
 }

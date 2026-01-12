@@ -30,3 +30,14 @@ button.addEventListener("click", () => {
     button.style.cursor = "default"; // Disable further clicks
   }
 });
+
+function updateOrientation() {
+  if (window.innerWidth > window.innerHeight) {
+    document.body.classList.add("landscape");
+  } else {
+    document.body.classList.remove("landscape");
+  }
+}
+
+window.addEventListener("resize", updateOrientation);
+updateOrientation();
