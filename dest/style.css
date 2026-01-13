@@ -114,11 +114,12 @@
       display: block;
       margin: 0 auto;
       
+      -webkit-tap-highlight-color: transparent;
       -webkit-touch-callout: none;  /* iOS: disables long-press menu */
       -webkit-user-select: none;    /* disables text selection */
       user-select: none;            /* disables text selection on desktop */
       -webkit-user-drag: none;      /* prevents dragging image */
-      touch-action: none;           /* disables pinch/zoom/scroll gestures */
+      touch-action: manipulation;   /* disables pinch/zoom/scroll gestures */
       
       transition: filter 1s ease-in-out, transform 0.2s ease;
     }

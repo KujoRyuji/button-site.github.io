@@ -1,4 +1,4 @@
-// const button = document.getElementById("bigButton");
+const button = document.getElementById("bigButton");
 
 // let pressCount = 0;
 // let isWaiting = false;
@@ -42,8 +42,29 @@ function updateOrientation() {
 window.addEventListener("resize", updateOrientation);
 updateOrientation();
 
+// Disable right-click menu on desktop
+button.addEventListener("contextmenu", e => e.preventDefault());
 
-button.addEventListener("contextmenu", e => {
-  // Only block contextmenu if it wasn't a normal short press
-  setTimeout(() => e.preventDefault(), 0);
+// Prevent default behavior on touch/pointer to stop blue box
+button.addEventListener("pointerdown", e => e.preventDefault());
+button.addEventListener("mousedown", e => e.preventDefault());
+button.addEventListener("touchstart", e => e.preventDefault());
+
+// Momentary glow for browsers that fail :active on touch
+button.addEventListener("pointerdown", () => {
+  button.style.transform = "scale(0.95)";
+  button.style.filter =
+    "drop-shadow(0 0 40px rgba(0,255,220,1)) " +
+    "drop-shadow(0 0 70px rgba(0,255,220,0.9)) " +
+    "drop-shadow(0 0 150px rgba(0,255,220,0.7))";
 });
+button.addEventListener("pointerup", resetGlow);
+button.addEventListener("pointerleave", resetGlow);
+
+function resetGlow() {
+  button.style.transform = "scale(1)";
+  button.style.filter =
+    "drop-shadow(0 0 0 rgba(0,255,220,0)) " +
+    "drop-shadow(0 0 0 rgba(0,255,220,0)) " +
+    "drop-shadow(0 0 0 rgba(0,255,220,0))";
+}
