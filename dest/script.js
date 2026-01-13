@@ -21,7 +21,7 @@ button.addEventListener("click", () => {
     setTimeout(() => {
       button.style.filter = breathingFilter; // Go back to breathing effect
       isWaiting = false;
-    }, 3000); // 3 seconds delay before returning to breathing
+    }, 1000); // 1 seconds delay before returning to breathing
 
   } else if (pressCount === 1) {
     // Second press: Transition to LED-on and stay there
