@@ -64,7 +64,7 @@
 
     .title-img {
       position: absolute;
-      top: 9%;
+      top: 10%;
       left: 50%;
       transform: translateX(-50%);
       max-width: 100%;
@@ -173,7 +173,7 @@
   }
 }
 
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 445px) {
   #bigButton {
     width: 80vw;  /* Maximize width on very small screens */
     height: auto; /* Keep aspect ratio */
